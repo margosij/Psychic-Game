@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Psychic Game</title>
+  </head>
+
+  <h1>The Psychic Game</h1>
+
+
+  <body>
+
+    <div id="game">
+        <p id="directions-text">Press any letter key to guess what I'm thinking of</p>
+        <p id="wins-text"></p>
+        <p id="losses-text"></p>
+        <p id="gueessesleft-text"></p>
+        <p id="keysguessed-text"></p>
+    </div>
+
+<!--check to see if the A-Z range below works-->
+    <script type="text/javascript">
+        var computerChoice= ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+        var wins=0;
+        var losses=0;
+        var guessesremaining=10;
+
+        var winsText = document.getElementById('wins-text');
+        var lossesText = document.getElementById('losses-text');
+        var guessesLeft = document.getElementById('guessesleft-text');
+        var lettersGuessed = document.getElementById('keysguessed-text');
+
+        //runs whenever user presses a key
+        document.onkeyup = function (event) {
+
+          //determines which key was selected by user
+          var userGuess = event.key;
+
+          //computer randomly chooses a letter
+          var computerGuess = computerChoice[Math.floor(Math.random() * computerChoice.length)];
+
+          if (userGuess === ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]) {
+
+            if (userGuess === computerChoice) {
+              wins++;}  
+
+              else {
+                guessesremaining - 1;
+              }
+
+            if (guessesremaining === 0) {
+              losses++;}
+
+
+            userGuessText.textContent = "Your guesses so far: " + userGuess;
+
+            winsText.textContent = "wins: " + wins;
+            lossesText.textContent = "losses: " + losses;
+            guessesLeft.textContent = "Guesses remaining: " + guessesremaining;
+          }
+        };
+
+
+    </script>
+
+   </body>
+
+
+</html>
